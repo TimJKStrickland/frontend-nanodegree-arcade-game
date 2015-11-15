@@ -32,7 +32,7 @@ var Engine = (function(global) {
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
-    function main() {
+    function main(){
         /* Get our time delta information which is required if your game
          * requires smooth animation. Because everyone's computer processes
          * instructions at different speeds we need a constant value that
@@ -90,6 +90,15 @@ var Engine = (function(global) {
      * the data/properties related to  the object. Do your drawing in your
      * render methods.
      */
+
+    /*
+     * This will check for collisions between the player and bugs and reset
+     * the game and score. I like the idea of putting the reset in the engine
+     * because the semantics lend itself to this area rather than for the app.js
+     * Code from: https://github.com/joseterrera/frogger/blob/gh-pages/js/engine.js
+     */
+    
+
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
