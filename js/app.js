@@ -8,7 +8,7 @@ var Enemy = function(x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-    this.speed = speed;
+    this.speed = Math.floor(Math.random() * 250);
 };
 
 // Update the enemy's position, required method for game
@@ -17,8 +17,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.speed = Math.floor(Math.random()* 6) + 250;
-    this.x += this.speed * dt;
+    this.x += (this.speed * dt);
     if(this.x >= 510){
         this.x = -110;
     }
@@ -36,9 +35,16 @@ Enemy.prototype.render = function() {
 
 //     var newEnemy1 = new Enemy(positionx, positiony);
 // }
-var enemy1 = new Enemy(-110, 300);
-var enemy2 = new Enemy(-50, 60);
-var enemy3 = new Enemy(0, 220);
+var enemy1 = new Enemy(-150, 300);
+var enemy2 = new Enemy(-110, 60);
+var enemy3 = new Enemy(-200, 220);
+// resets the enemy 
+Enemy.prototype.reset = function(){
+    
+        allEnemies.forEach(function(enemy){
+            this.x = -110;
+        })
+};
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -48,33 +54,25 @@ var Player = function(x, y, move) {
     this.x = x;
     this.y = y;
     this.move = move;
+    this.score = 0;
 };
 
 Player.prototype.update = function(dt){
-    Player.move * dt;
+    // Player.move * dt;
 };
 
 Player.prototype.render = function(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-Player.prototype.reset = function(){
+Player.prototype.startSpot = function(){
     this.x = 200;
     this.y = 400;
 }
-
-score = function(){
-    // Something goes here to put up the score
-    if(player.y <= 10){
-        console.log(+10)
-    }
+Player.prototype.reset = function(){
+    this.x = 200;
+    this.y = 400;
+    this.score = 0;
 }
-
-// Enemy.prototype.checkCollide = function(){
-//     if(this.x >= player.x){
-//         player.reset();
-//     };
-//     if(player.x >= )
-// }
 
 Player.prototype.handleInput = function(keyCode){
     switch(keyCode){
@@ -82,9 +80,9 @@ Player.prototype.handleInput = function(keyCode){
     break;  
     case 'right' : this.x = this.x + 101;
     break;
-    case 'up' : this.y = this.y - 101;
+    case 'up' : this.y = this.y - 102;
     break;
-    case 'down' : this.y = this.y + 101;
+    case 'down' : this.y = this.y + 102;
     break;
     }
     if(this.x <= 0) {
@@ -102,6 +100,25 @@ Player.prototype.handleInput = function(keyCode){
     }
 };
 
+// var Gem = function(x, y){
+//     this.sprite = 'images/Gem Blue.png';
+//     this.x = x;
+//     this.y = y;
+// };
+
+// Gem.prototype.render = function(){
+//     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+// };
+
+// var allGems = [];
+// var totalGems = 5;
+
+// Gem.prototype.update = function(){
+    // randomize placement of Gems
+    // also setTimeout for 3 seconds-ish
+
+// };
+// var gem = new Gem(450, 100);
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player

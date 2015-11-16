@@ -80,7 +80,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function  and loops through all of the
@@ -91,20 +91,36 @@ var Engine = (function(global) {
      * render methods.
      */
 
-    /*
-     * This will check for collisions between the player and bugs and reset
-     * the game and score. I like the idea of putting the reset in the engine
-     * because the semantics lend itself to this area rather than for the app.js
-     * Code from: https://github.com/joseterrera/frogger/blob/gh-pages/js/engine.js
-     */
-    
-
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
         player.update();
     }
+
+     /*
+     * This will check for collisions between the player and bugs and reset
+     * the game and score. I like the idea of putting the reset in the engine
+     * because the semantics lend itself to this area rather than the app.js
+     * Code from: https://sobermoode.github.io/Bugger/js/engine.js
+     */
+
+    function checkCollisions(){
+        allEnemies.forEach(function(enemy){
+            if(player.x <= enemy.x + 50 && player.x + 50 >= enemy.x && player.y + 50 >= enemy.y && player.y <= enemy.y + 50 ){
+                reset();
+            }
+        })
+        if(player.y <= 1){
+            player.score += 100;
+            document.getElementById("score").innerHTML = player.score;
+            player.startSpot();
+            // allEnemies.forEach(function(enemy){   
+            //     reset();
+            // })
+        }
+    }
+
 
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every
@@ -162,6 +178,7 @@ var Engine = (function(global) {
         });
 
         player.render();
+        // gem.render();
     }
 
     /* This function does nothing but it could have been a good place to
@@ -170,6 +187,11 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
+        player.reset();
+        document.getElementById("score").innerHTML = player.score;
+        allEnemies.forEach(function(enemy){
+            enemy.reset(Math.floor(Math.random()));
+        })
     }
 
     /* Go ahead and load all of the images we know we're going to need to
