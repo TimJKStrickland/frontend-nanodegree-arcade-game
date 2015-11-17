@@ -32,7 +32,7 @@ var Engine = (function(global) {
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
-    function main() {
+    function main(){
         /* Get our time delta information which is required if your game
          * requires smooth animation. Because everyone's computer processes
          * instructions at different speeds we need a constant value that
@@ -80,7 +80,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function  and loops through all of the
@@ -90,6 +90,7 @@ var Engine = (function(global) {
      * the data/properties related to  the object. Do your drawing in your
      * render methods.
      */
+
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
@@ -97,13 +98,34 @@ var Engine = (function(global) {
         player.update();
     }
 
+     /*
+     * This will check for collisions between the player and bugs and reset
+     * the game and score. I like the idea of putting the reset in the engine
+     * because the semantics lend itself to this area rather than the app.js
+     * Code from: https://sobermoode.github.io/Bugger/js/engine.js
+     */
+
+    function checkCollisions(){
+        allEnemies.forEach(function(enemy){
+            if(player.x <= enemy.x + 50 && player.x + 50 >= enemy.x && player.y + 50 >= enemy.y && player.y <= enemy.y + 50 ){
+                reset();
+            }
+        })
+        if(player.y <= 1){
+            player.score += 100;
+            document.getElementById("score").innerHTML = player.score;
+            player.startSpot();
+        }
+    }
+
+
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every
      * game tick (or loop of the game engine) because that's how games work -
      * they are flipbooks creating the illusion of animation but in reality
      * they are just drawing the entire screen over and over.
      */
-    function render() {
+    function render(){
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
          */
@@ -153,14 +175,18 @@ var Engine = (function(global) {
         });
 
         player.render();
+
     }
 
-    /* This function does nothing but it could have been a good place to
-     * handle game reset states - maybe a new game menu or a game over screen
-     * those sorts of things. It's only called once by the init() method.
+    /* This function handles game reset: puts the character back at the start
+     * and resets the score.
      */
     function reset() {
-        // noop
+        player.reset();
+        document.getElementById("score").innerHTML = player.score;
+        allEnemies.forEach(function(enemy){
+            enemy.reset(Math.floor(Math.random()));
+        })
     }
 
     /* Go ahead and load all of the images we know we're going to need to
