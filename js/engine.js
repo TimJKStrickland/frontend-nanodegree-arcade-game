@@ -115,9 +115,6 @@ var Engine = (function(global) {
             player.score += 100;
             document.getElementById("score").innerHTML = player.score;
             player.startSpot();
-            // allEnemies.forEach(function(enemy){   
-            //     reset();
-            // })
         }
     }
 
@@ -128,7 +125,7 @@ var Engine = (function(global) {
      * they are flipbooks creating the illusion of animation but in reality
      * they are just drawing the entire screen over and over.
      */
-    function render() {
+    function render(){
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
          */
@@ -178,15 +175,13 @@ var Engine = (function(global) {
         });
 
         player.render();
-        // gem.render();
+
     }
 
-    /* This function does nothing but it could have been a good place to
-     * handle game reset states - maybe a new game menu or a game over screen
-     * those sorts of things. It's only called once by the init() method.
+    /* This function handles game reset: puts the character back at the start
+     * and resets the score.
      */
     function reset() {
-        // noop
         player.reset();
         document.getElementById("score").innerHTML = player.score;
         allEnemies.forEach(function(enemy){
