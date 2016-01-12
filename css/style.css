@@ -1,7 +1,7 @@
 body {
     text-align: center;
 }
-.score-text {
+#score-text {
     font-family: "Roboto, Sans-Serif";
     padding: 10px;
     text-align: center;
