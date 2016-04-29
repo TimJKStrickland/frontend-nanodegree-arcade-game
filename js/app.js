@@ -19,7 +19,7 @@ Enemy.prototype.update = function(dt) {
 // all computers.
     this.x += (this.speed * dt);
     // loops the enemies
-    if(this.x >= 900){
+    if(this.x >= 808){
         this.x = -110;
     }
 };
