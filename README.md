@@ -6,7 +6,7 @@ This is a project forked from Udacity's Front End Nanodegree (_FEND_ for short).
 
 ##How to Play##
 
-Either clone the project to your desktop and open the index.html file *or* go to timjkstrickland.github.io/
+Either clone the project to your desktop and open the index.html file *or* go to [timjkstrickland.github.io/Great-First-Dates](timjkstrickland.github.io/Great-First-Dates)
 
 Use the directional keys to move around the map. Avoid the bugs at all costs (much like every developer should). If you get hit by the bugs, you *lose*!
 
