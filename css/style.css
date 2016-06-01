@@ -1,3 +1,14 @@
 body {
     text-align: center;
 }
+<<<<<<< HEAD
+
+div{
+	position: relative;
+=======
+#score-text {
+    font-family: "Roboto, Sans-Serif";
+    padding: 10px;
+    text-align: center;
+>>>>>>> origin/gh-pages
+}
