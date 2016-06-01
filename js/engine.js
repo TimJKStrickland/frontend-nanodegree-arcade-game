@@ -29,8 +29,12 @@ var Engine = (function(global) {
 <<<<<<< HEAD
     canvas.height = 808;
 =======
+<<<<<<< HEAD
+    canvas.height = 808;
+=======
     canvas.height = 606;
 >>>>>>> origin/gh-pages
+>>>>>>> gh-pages
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -146,8 +150,12 @@ var Engine = (function(global) {
 <<<<<<< HEAD
             numRows = 8,
 =======
+<<<<<<< HEAD
+            numRows = 8,
+=======
             numRows = 6,
 >>>>>>> origin/gh-pages
+>>>>>>> gh-pages
             numCols = 8,
             row, col;
 
