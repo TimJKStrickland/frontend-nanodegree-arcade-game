@@ -25,8 +25,8 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = 505;
-    canvas.height = 606;
+    canvas.width = 808;
+    canvas.height = 808;
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -110,7 +110,7 @@ var Engine = (function(global) {
             if(player.x <= enemy.x + 50 && player.x + 50 >= enemy.x && player.y + 50 >= enemy.y && player.y <= enemy.y + 50 ){
                 reset();
             }
-        })
+        });
         if(player.y <= 1){
             player.score += 100;
             document.getElementById("score").innerHTML = player.score;
@@ -131,14 +131,16 @@ var Engine = (function(global) {
          */
         var rowImages = [
                 'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'images/stone-block.png',   // Row 1 of 4 of stone
+                'images/stone-block.png',   // Row 2 of 4 of stone
+                'images/stone-block.png',   // Row 3 of 4 of stone
+                'images/stone-block.png',   // Row 4 of 4 of stone
+                'images/grass-block.png',   // Row 1 of 3 of grass
+                'images/grass-block.png',   // Row 2 of 3 of grass
+                'images/grass-block.png'    // Row 3 of 3 of grass
             ],
-            numRows = 6,
-            numCols = 5,
+            numRows = 8,
+            numCols = 8,
             row, col;
 
         /* Loop through the number of rows and columns we've defined above
@@ -186,7 +188,7 @@ var Engine = (function(global) {
         document.getElementById("score").innerHTML = player.score;
         allEnemies.forEach(function(enemy){
             enemy.reset(Math.floor(Math.random()));
-        })
+        });
     }
 
     /* Go ahead and load all of the images we know we're going to need to
