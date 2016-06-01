@@ -26,7 +26,11 @@ var Engine = (function(global) {
         lastTime;
 
     canvas.width = 808;
+<<<<<<< HEAD
     canvas.height = 808;
+=======
+    canvas.height = 606;
+>>>>>>> origin/gh-pages
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -139,7 +143,11 @@ var Engine = (function(global) {
                 'images/grass-block.png',   // Row 2 of 3 of grass
                 'images/grass-block.png'    // Row 3 of 3 of grass
             ],
+<<<<<<< HEAD
             numRows = 8,
+=======
+            numRows = 6,
+>>>>>>> origin/gh-pages
             numCols = 8,
             row, col;
 
