@@ -1,14 +1,17 @@
 body {
     text-align: center;
 }
-<<<<<<< HEAD
 
 div{
-	position: relative;
-=======
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: -50px;
+
+}
 #score-text {
     font-family: "Roboto, Sans-Serif";
     padding: 10px;
+    pos
     text-align: center;
->>>>>>> origin/gh-pages
 }
