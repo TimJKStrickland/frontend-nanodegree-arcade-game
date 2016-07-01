@@ -1,10 +1,13 @@
 body {
-    text-align: center;
+    display: flex;
+    max-width: 1080px;
+    margin: 0 auto;
+    justify-content: space-between;
 }
 
 .container {
-	margin-bottom: -50px;
-
+	width: 400px;
+	
 }
 #score-text {
     font-family: "Roboto, Sans-Serif";
